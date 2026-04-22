@@ -1,0 +1,24 @@
+# Qwen3.6-35B-A3B — Ollama + MLX backend
+# MoE 35B total / 3B active — mxfp8 quantization (8-bit mixed precision)
+# 2026-04 최신. Agentic coding 강화.
+# M4 Pro 64GB 기준 모델 38GB + 런타임 오버헤드 — MLX backend 공식 작동
+#
+# Ollama 0.21 MLX backend 공식 지원 변형:
+#   - qwen3.6:35b-a3b-mxfp8 (38GB, MLX runner 활성) ← 이 파일
+#   - qwen3.6:35b-a3b-mlx-bf16 (70GB, 64GB RAM 부족)
+#
+# 비교 (backend 미활성 대안):
+#   - qwen3.6:35b-a3b (q4, 23GB, GGML Metal만 사용) → 35b-a3b-q4.yaml 참고
+
+model:
+  name: "qwen3.6-35b-a3b-mxfp8"             # 파일명·tag·alias 일치
+  tag: "qwen3.6:35b-a3b-mxfp8"              # mxfp8 (MLX runner 활성)
+  alias: "qwen3.6-35b-a3b-mxfp8"            # API 표시 이름 (tag와 일치)
+  description: "Qwen3.6 35B MoE mxfp8 — Ollama MLX runner"
+
+server:
+  host: "0.0.0.0"
+  port: 11434
+  mlx: true                                  # OLLAMA_USE_MLX=1
+  keep_alive: "30m"                          # 30분 메모리 상주
+  num_ctx: 16384                             # 16K context

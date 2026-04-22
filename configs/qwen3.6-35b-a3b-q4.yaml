@@ -1,0 +1,16 @@
+# Qwen3.6-35B-A3B Q4 (GGML Metal만, MLX 미활성)
+# 가볍지만 MLX 이점 없음. mxfp8 대비 디스크 14GB 절약.
+# 품질·속도는 mxfp8이 우수. 메모리 매우 빠듯한 상황에만 사용.
+
+model:
+  name: "qwen3.6-35b-a3b-q4"
+  tag: "qwen3.6:35b-a3b"                    # 기본 태그 = q4_k_m
+  alias: "qwen3.6-35b-a3b-q4"
+  description: "Qwen3.6 35B MoE q4 — GGML Metal (MLX 미활성)"
+
+server:
+  host: "0.0.0.0"
+  port: 11434
+  mlx: true                                  # 무시됨 (q4는 MLX 미지원)
+  keep_alive: "30m"
+  num_ctx: 16384

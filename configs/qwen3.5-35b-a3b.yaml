@@ -1,0 +1,16 @@
+# Qwen3.5-35B-A3B — Ollama + MLX backend (fallback)
+# Qwen3.6가 MLX backend에서 문제 있을 시 fallback.
+# Ollama 공식 MLX backend 지원 모델.
+
+model:
+  name: "qwen3.5-35b-a3b"                   # 파일명·tag·alias 일치
+  tag: "qwen3.5:35b-a3b"
+  alias: "qwen3.5-35b-a3b"
+  description: "Qwen3.5 35B MoE — Ollama MLX backend 공식 지원"
+
+server:
+  host: "0.0.0.0"
+  port: 11434
+  mlx: true
+  keep_alive: "30m"
+  num_ctx: 16384
