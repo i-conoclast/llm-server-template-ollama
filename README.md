@@ -2,7 +2,7 @@
 
 Config-driven LLM serving on Apple Silicon using [Ollama](https://ollama.com) with **MLX backend** (v0.19+).
 
-OpenAI-compatible API, launchd auto-start, health monitoring. Sibling to [`llm-server-template-mlx`](../llm-server-template-mlx) but uses Ollama runtime instead of mlx-lm directly.
+OpenAI-compatible API, launchd auto-start, health monitoring.
 
 ## Why Ollama + MLX?
 
@@ -12,17 +12,6 @@ Ollama 0.19+ introduced an **MLX backend** on Apple Silicon that delivers:
 - Unified memory efficiency via Apple's MLX framework
 
 Activate via `OLLAMA_USE_MLX=1` env var. Requires M1+ with 32GB+ unified memory.
-
-Differences vs `llm-server-template-mlx`:
-| Aspect | mlx (direct) | ollama (this) |
-|---|---|---|
-| Runtime | `mlx_lm.server` | `ollama serve` |
-| Model source | HuggingFace (mlx-community) | Ollama registry (`ollama.com/library`) |
-| Model format | MLX-native files (`~/models/...`) | Ollama blob (`~/.ollama/models`) |
-| Download | `huggingface_hub.snapshot_download` | `ollama pull` |
-| Alias proxy | Needed (wrapper) | Not needed (tag = alias) |
-| MLX backend | Native | Env var `OLLAMA_USE_MLX=1` |
-| Ecosystem | mlx-community, research models | Curated Ollama library |
 
 ## Requirements
 
